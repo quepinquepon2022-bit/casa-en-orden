@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F8FCFB">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Casa en Orden">
+<title>Casa en Orden – Curso para organizar y limpiar tu casa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap">
+<style>
+:root{--bg:#FAF8F0;--card:#FFFEFA;--ink:#14291B;--mute:#5C6B60;--line:#E4E0CD;--brand:#35603F;--onbrand:#fff;--hi:#DDEAD7;--sand:#E9E4D2;--ok:#35603F;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 'DM Sans',system-ui,sans-serif}
+main{max-width:600px;margin:0 auto;padding:22px 20px 120px}
+h1,h2,.cert .n,dialog h2{font-family:'Fraunces',Georgia,'Times New Roman',serif;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(2rem,9vw,2.9rem);font-weight:800;line-height:1.06}
+h1 em{font-style:italic;color:var(--brand)}
+h2{font-size:1.15rem;font-weight:700;line-height:1.2}
+.sub{color:var(--mute);margin:8px 0 16px}
+.pill{display:inline-block;background:var(--hi);color:var(--ink);border-radius:999px;padding:9px 18px;font-size:.95rem;margin:4px 0 22px}
+.lead{color:var(--mute);font-size:1.15rem;line-height:1.6;margin:18px 0 0}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 18px}
+.meta{color:var(--mute);font-size:.95rem;margin:0}
+.hero{display:block;width:100%;height:auto;margin:26px 0 8px}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.btn{background:var(--brand);color:var(--onbrand);padding:15px 28px;font-weight:600;box-shadow:0 10px 22px rgba(53,96,63,.22)}
+.btn.out{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+.ghost{background:transparent;color:var(--mute);padding:8px 0;font-weight:500;border-radius:8px}
+.prog{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;margin:26px 0 18px;display:flex;flex-direction:column;gap:10px}
+.bar{height:8px;background:var(--line);border-radius:8px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--brand);border-radius:8px}
+.mod{background:var(--card);border:1px solid var(--line);border-radius:22px;margin-bottom:14px;overflow:hidden}
+.mod header{padding:16px 18px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.mod header small{color:var(--mute)}
+.les{display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:transparent;color:var(--ink);padding:14px 18px;border-top:1px solid var(--line);border-radius:0}
+.les .dot{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);flex:none;display:grid;place-items:center;font-size:.8rem;font-weight:700;color:var(--mute)}
+.les.on .dot{background:var(--brand);border-color:var(--brand);color:var(--onbrand)}
+.les small{color:var(--mute);display:block}
+.tag{background:var(--hi);color:var(--ink);font-size:.75rem;font-weight:700;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.task{border-left:5px solid var(--brand);background:var(--card);border-radius:0 16px 16px 0;padding:14px 18px;margin:22px 0}
+.task p{margin:4px 0 0}
+.les-body p{margin:0 0 14px}
+input{font:inherit;padding:13px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);width:100%;margin:8px 0 14px}
+.cert{border:3px double var(--brand);border-radius:12px;background:var(--card);padding:36px 20px;text-align:center;margin:14px 0 20px}
+.cert .n{font-size:1.9rem;font-weight:800;margin:10px 0;overflow-wrap:anywhere}
+dialog{border:0;border-radius:24px;padding:24px;max-height:90vh;overflow:auto;max-width:92vw;width:380px;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+ul.ft{padding-left:18px;margin:8px 0 14px}
+.tabs{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:560px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:999px;display:flex;gap:4px;padding:6px;box-shadow:0 8px 28px rgba(20,41,27,.14);z-index:5}
+.tabs button{flex:1;background:transparent;color:var(--mute);padding:11px 4px;font-weight:600;font-size:.95rem}
+.tabs button[aria-current=page]{background:var(--brand);color:var(--onbrand)}
+.row{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:6px 8px 6px 16px;margin-bottom:10px}
+.row label{display:flex;align-items:center;gap:12px;flex:1;min-height:46px;cursor:pointer}
+.row input[type=checkbox]{width:26px;height:26px;accent-color:var(--brand);flex:none;margin:0}
+.row input[type=text]{margin:0}
+.row .btn{padding:11px 18px;box-shadow:none}
+.row.on span{text-decoration:line-through;color:var(--mute)}
+.x{background:transparent;color:var(--mute);padding:8px 10px;border-radius:10px}
+.empty{color:var(--mute);padding:20px;text-align:center;border:1.5px dashed var(--line);border-radius:18px;margin-bottom:12px}
+form.add{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+form.add input{margin:0;flex:1;min-width:0}
+form.add .btn{padding:12px 20px;box-shadow:none}
+form.add select{font:inherit;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);flex:1;min-width:0}
+#tn{flex:1 1 100%}
+.mic{width:50px;flex:none;background:var(--hi)!important;color:var(--ink)!important;font-size:1.2rem;padding:0!important}
+.mic.rec{background:#B5452F!important;color:#fff!important}
+.z{display:block;color:var(--mute);font-size:.8rem}
+.ghost+.ghost{margin-left:16px}
+@media print{.noprint{display:none!important}body{background:#fff}.cert{border-color:#000}}
+
+/* ===== Mejoras visuales ===== */
+:root{--brand2:#5E9C6B;--sh:0 8px 26px rgba(20,41,27,.08)}
+
+body{background:radial-gradient(900px 420px at 50% -120px,var(--hi),transparent) no-repeat,var(--bg)}
+main>*{animation:up .45s ease backwards}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){main>*{animation:none}.btn,.les{transition:none!important}}
+.heroc{background:linear-gradient(165deg,var(--card),var(--hi));border:1px solid var(--line);border-radius:32px;padding:28px 22px 14px;box-shadow:0 22px 50px rgba(53,96,63,.14)}
+.heroc .pill{background:var(--card);border:1px solid var(--line)}
+.heroc .hero{border-radius:22px;margin:22px 0 6px}
+.btn{background-image:linear-gradient(135deg,var(--brand),var(--brand2));transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(53,96,63,.28)}
+.btn:active{transform:scale(.98)}
+.btn.out{background-image:none}
+.row .btn,form.add .btn{box-shadow:none}
+.mod{box-shadow:var(--sh)}
+.mod header{background:linear-gradient(90deg,var(--hi),transparent)}
+.mod h2{display:flex;align-items:center;gap:12px;font-size:1.2rem}
+.mn{display:inline-grid;place-items:center;width:34px;height:34px;flex:none;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:var(--onbrand);font-size:1rem}
+.les{transition:background .15s}
+.les:hover{background:var(--hi)}
+.les .dot{transition:all .2s}
+.les.on b{color:var(--mute)}
+.bar{height:10px}
+.bar i{background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .5s}
+.prog{box-shadow:var(--sh)}
+.les-body{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px 20px 8px;box-shadow:var(--sh)}
+.les-body p{font-size:1.05rem;line-height:1.7}
+.task{background:linear-gradient(135deg,var(--hi),var(--card));border:1px solid var(--line);border-left:5px solid var(--brand);box-shadow:var(--sh)}
+.task b::before{content:'✨ '}
+.tag{background:var(--brand);color:var(--onbrand)}
+.tabs{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:color-mix(in srgb,var(--card) 90%,transparent);box-shadow:0 12px 34px rgba(20,41,27,.2)}
+.tabs button{transition:background .2s,color .2s}
+.row{box-shadow:var(--sh)}
+input:focus{border-color:var(--brand);outline:none;box-shadow:0 0 0 3px var(--hi)}
+.cert{background:linear-gradient(160deg,var(--card),var(--hi));box-shadow:0 18px 44px rgba(53,96,63,.16);border-width:4px}
+dialog{box-shadow:0 30px 70px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(10,20,14,.55);backdrop-filter:blur(3px)}
+dialog h2{font-size:1.4rem;margin-bottom:6px}
+
+/* ===== Estilo tipo anuncio ===== */
+:root{--bg:#EFF8F2;--card:#fff;--ink:#12324A;--mute:#5B7183;--line:#D9EADF;--brand:#10925A;--brand2:#27B173;--onbrand:#fff;--hi:#E2F4E8;--sand:#E2F4E8;--gold:#FFC62E;--gold2:#FFDD6B}
+body{font-family:'Roboto',system-ui,sans-serif}
+h1,h2,.cert .n,dialog h2{font-family:'Roboto',system-ui,sans-serif;letter-spacing:-.01em}
+h1{font-weight:900;color:var(--ink)}
+h1 em{font-style:normal;color:var(--brand)}
+.appbar{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+.appbar img{border-radius:12px;box-shadow:0 4px 12px rgba(16,146,90,.3)}
+.appbar b{font-size:1.25rem;font-weight:800}
+.heroc{background:var(--card)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+.chips span{background:var(--hi);color:var(--ink);border-radius:999px;padding:7px 12px;font-size:.88rem;font-weight:500}
+#cont,#cert{background-image:linear-gradient(135deg,var(--gold2),var(--gold));color:#1B2B1F;font-weight:800;box-shadow:0 10px 22px rgba(255,198,46,.4)}
+.band{background:linear-gradient(135deg,#0E8A55,#16A56A);color:#fff;border-radius:26px;padding:20px;margin:22px 0 0;display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 30px rgba(14,138,85,.3)}
+.band b{font-size:1.35rem;font-weight:900;line-height:1.15}
+.band span{opacity:.92}
+.band .btn{background-image:linear-gradient(135deg,var(--gold2),var(--gold));color:#1B2B1F;font-weight:800;align-self:flex-start;box-shadow:none}
+.mod header{background:none;gap:14px}
+.mn{width:52px;height:52px;border-radius:16px;background:var(--hi);background-image:none;font-size:1.6rem;color:inherit}
+.mi{flex:1;min-width:0}
+.mi h2{display:block;font-size:1.1rem;font-weight:800}
+.mi small{display:block;margin-top:2px}
+.mi .bar{height:7px;margin-top:8px}
+.les .dot{border-color:var(--brand);color:var(--brand)}
+.les.on .dot{color:var(--onbrand)}
+.tabs button{font-weight:700}
+
+/* ===== Más parecido al anuncio ===== */
+.mn{padding:4px;overflow:hidden}
+.mn svg{width:100%;height:100%;display:block}
+.heroc{position:relative;overflow:hidden}
+.heroc::before{content:"✦";position:absolute;top:18px;right:20px;color:var(--gold);font-size:1.6rem}
+.heroc::after{content:"✦";position:absolute;bottom:70px;left:14px;color:var(--brand2);font-size:1.1rem;opacity:.7}
+.heroc .hero{margin:20px 0 18px;box-shadow:0 14px 30px rgba(16,146,90,.15)}
+
+/* ===== Colores más claros y llamativos ===== */
+:root{--bg:#F5FBF8;--ink:#0F2D52;--mute:#5F7490;--line:#DFEDE7;--brand:#0B9A66;--brand2:#2FCB92;--hi:#E2F6EE;--sand:#E2F6EE;--gold:#FFC21A;--gold2:#FFDB5C}
+body{background:radial-gradient(700px 380px at 15% -80px,#FFE9B8,transparent) no-repeat,radial-gradient(700px 380px at 95% -60px,#D6EEFF,transparent) no-repeat,var(--bg)}
+.mod{border:1px solid var(--line);border-top:5px solid var(--mc,var(--brand))}
+.mn{background:var(--mt,var(--hi))}
+.mi .bar i{background:var(--mc,var(--brand));background-image:none}
+.chips span:nth-child(1){background:#FFEBD6}
+.chips span:nth-child(2){background:#DDEFFF}
+.chips span:nth-child(3){background:#FFE0EA}
+.chips span:nth-child(4){background:#EBE2FF}
+.band{background:linear-gradient(135deg,#0B9A66,#2FCB92)}
+.heroc{background:linear-gradient(180deg,#fff,#F1FAF6)}
+.pill{background:#FFEBD6!important;border-color:#FFD2A8!important}
+.tag{background:var(--mc,var(--brand));color:#fff}
+.les:hover{background:var(--mt,var(--hi))}
+.les .dot{border-color:var(--mc,var(--brand));color:var(--mc,var(--brand))}
+.les.on .dot{background:var(--mc,var(--brand));border-color:var(--mc,var(--brand));color:#fff}
+
+
+:root{color-scheme:light;--bg:#F8FCFB}
+
+/* ===== Contornos de colores ===== */
+:root{--rb:linear-gradient(135deg,#FF8A3D,#FF5C8A,#8B5CF6,#2E9BFF,#0FB57A)}
+.heroc{border:3px solid transparent;background:linear-gradient(180deg,#fff,#F1FAF6) padding-box,var(--rb) border-box;box-shadow:0 18px 40px rgba(139,92,246,.16)}
+.heroc .hero{box-shadow:none}
+.mod{border:2.5px solid var(--mc,var(--brand));border-top-width:6px;box-shadow:0 10px 24px color-mix(in srgb,var(--mc,#0B9A66) 22%,transparent)}
+.mod .les{border-top:1.5px dashed color-mix(in srgb,var(--mc,#0B9A66) 45%,#fff)}
+.prog{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--rb) border-box}
+.les-body{border:3px solid var(--mc,var(--line));box-shadow:0 10px 24px color-mix(in srgb,var(--mc,#0B9A66) 20%,transparent)}
+.task{border:3px solid var(--mc,var(--brand));border-left-width:9px;background:var(--mt,var(--hi))}
+.chips span{border:2px solid #ddd}
+.chips span:nth-child(1){border-color:#FFB26B}
+.chips span:nth-child(2){border-color:#7CC4FF}
+.chips span:nth-child(3){border-color:#FF8FB0}
+.chips span:nth-child(4){border-color:#B79BFF}
+.btn{border:3px solid rgba(255,255,255,.7);box-shadow:0 0 0 3px color-mix(in srgb,var(--brand) 25%,transparent),0 10px 22px rgba(11,154,102,.25)}
+.btn.out{background:#fff;border:3px solid var(--brand);box-shadow:none;color:var(--brand);font-weight:700}
+#cont,#cert{border:3px solid #FF9F1C;box-shadow:0 0 0 4px rgba(255,194,26,.35),0 10px 22px rgba(255,159,28,.35)}
+.band{border:3px solid #FFC21A;box-shadow:0 14px 30px rgba(11,154,102,.3)}
+.band .btn{border-color:#FF9F1C;box-shadow:none}
+.tabs{border:3px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--rb) border-box;backdrop-filter:none;-webkit-backdrop-filter:none}
+.tabs button[aria-current=page]{background:var(--brand);box-shadow:0 4px 12px rgba(11,154,102,.35)}
+.row{border:2.5px solid var(--rc,#DFEDE7)}
+.row:nth-child(5n+1){--rc:#FFB26B}
+.row:nth-child(5n+2){--rc:#7CC4FF}
+.row:nth-child(5n+3){--rc:#FF8FB0}
+.row:nth-child(5n+4){--rc:#B79BFF}
+.row:nth-child(5n){--rc:#6BDDAE}
+.empty{border:2.5px dashed #FFB26B;background:#FFF8EF}
+input,form.add select{border:2.5px solid #BFE3D3}
+input:focus,form.add select:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(15,181,122,.2)}
+dialog{border:4px solid transparent;background:linear-gradient(#fff,#fff) padding-box,var(--rb) border-box}
+.cert{border:5px solid transparent;background:linear-gradient(#fff,#F1FAF6) padding-box,var(--rb) border-box}
+.appbar img{border:3px solid #fff;box-shadow:0 0 0 3px #FFC21A,0 6px 14px rgba(255,194,26,.4)}
+.pill{border:2px solid #FFB26B!important}
+.tabs button{white-space:nowrap;font-size:.86rem;padding:11px 2px}
+.btn{border-radius:999px}
+
+/* ===== Pestañas de módulos ===== */
+.mtabs{display:flex;gap:10px;overflow-x:auto;padding:8px 4px 12px;margin:20px -4px 4px;scroll-snap-type:x proximity;scrollbar-width:none}
+.mtabs::-webkit-scrollbar{display:none}
+.mtab{flex:none;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;gap:1px;min-width:96px;padding:10px 12px;background:#fff;color:var(--ink);border:2.5px solid var(--mc);border-radius:20px;transition:transform .15s,background .15s}
+.mtab .e{font-size:1.5rem;line-height:1.1}
+.mtab b{font-size:.9rem;font-weight:800}
+.mtab small{color:var(--mute);font-size:.75rem}
+.mtab.sel{background:var(--mc);color:#fff;transform:translateY(-2px);box-shadow:0 8px 18px color-mix(in srgb,var(--mc) 40%,transparent)}
+.mtab.sel small{color:#fff}
+.mtabs+.mod{margin-top:6px}
+.mod header .tag{padding:6px 10px!important;font-size:.72rem!important}
+.mod header{padding:14px}
+.mi small{font-size:.82rem}
+
+.chk{width:100%;border-collapse:collapse;font-size:.82rem;background:#fff}
+.chk th,.chk td{border:1.5px solid var(--line);padding:6px 3px;text-align:center}
+.chk td:first-child,.chk th:first-child{text-align:left;padding-left:8px}
+.chk tr.z td{background:var(--hi);font-weight:800;text-align:left}
+.bx{display:inline-block;width:16px;height:16px;border:2px solid var(--brand);border-radius:5px}
+@media print{.chk{font-size:11pt}.bx{width:14px;height:14px}h1{font-size:20pt}}
+.chk{table-layout:fixed}
+.chk th:first-child{width:40%}
+.chk tr.z td{display:table-cell}
+.chk{margin-bottom:14px}
+.chk thead th{background:var(--hi);font-weight:800}
+.chk thead th:first-child{font-size:.95rem}
+@media print{.chk{break-inside:avoid}}
+.bx{width:24px;height:24px;padding:0;background:#fff;border:2.5px solid var(--brand);border-radius:7px;vertical-align:middle;cursor:pointer;position:relative;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.bx.on{background:var(--brand)}
+.bx.on::after{content:"✓";color:#fff;font-weight:900;font-size:16px;line-height:1;position:absolute;inset:0;display:grid;place-items:center}
+#back{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:12px;z-index:7;background:#fff;color:var(--brand);border:3px solid var(--brand);padding:11px 20px;font-size:1.05rem;font-weight:800;border-radius:999px;box-shadow:0 8px 20px rgba(11,154,102,.28)}
+#back:active{transform:scale(.97)}
+main.hasback{padding-top:84px}
+body.hasback::before{content:"";position:fixed;top:0;left:0;right:0;height:calc(66px + env(safe-area-inset-top,0px));background:#fff;border-bottom:3px solid var(--line);box-shadow:0 6px 16px rgba(15,45,82,.08);z-index:6}
+#back{box-shadow:none;padding:9px 18px;font-size:1rem}
+main.hasback{padding-top:88px}
+@media print{body.hasback::before{display:none}}
+.stats{display:flex;gap:10px;margin:18px 0 0}
+.st{flex:1;background:#fff;border:3px solid var(--c);border-radius:20px;padding:12px 8px;text-align:center;box-shadow:0 8px 18px color-mix(in srgb,var(--c) 18%,transparent)}
+.st b{display:block;font-size:1.05rem;font-weight:900;color:var(--ink)}
+.st span{display:block;font-size:.76rem;color:var(--mute);margin-top:2px;line-height:1.2}
+.seg{display:flex;gap:8px;margin:6px 0 12px}
+.seg button{flex:1;padding:11px;background:#fff;color:var(--brand);border:3px solid var(--brand);font-weight:800;border-radius:999px}
+.seg button.on{background:var(--brand);color:#fff}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<nav class="tabs noprint" id="tabs"></nav>
+<dialog id="dlg"></dialog>
+<script>
+var M=[
+{t:"Empezá sin agobio",free:1,l:[
+["La regla de los 15 minutos",5,"El desorden no se vence en un fin de semana heroico, sino con ratos cortos. Poné un temporizador de 15 minutos y trabajá un solo rincón. Cuando suene, pará.\nParar a tiempo es parte del método: así mañana vas a querer volver.","Elegí un cajón o un estante y trabajá en él 15 minutos hoy."],
+["Tu mapa de la casa",7,"Dibujá o anotá las zonas: cocina, baño, dormitorios, living, entrada. Calificá cada una del 1 al 5 según cuánto te molesta.\nEmpezá por la entrada o la cocina: son las que más ves y las que más tiempo te ahorran.","Escribí tus zonas y ponele una nota a cada una. Marcá cuál va primero."],
+["Las cuatro cajas",8,"Tené a mano cuatro cajas o bolsas: Se queda, Se va (donar), Se tira y Otro lugar. Cada objeto va a una, sin quedarse a mitad de camino.\nVaciá las cajas el mismo día: lo que queda en el pasillo vuelve a la casa.","Llená las cuatro cajas con 10 objetos de una zona y sacá de la casa las de “Se va” y “Se tira”."],
+["Tu kit de arranque",6,"Reuní en una caja o un balde lo que vas a usar siempre: trapo, esponja, bolsas de residuos, guantes y un rociador. Tenerlo todo junto te ahorra vueltas y excusas.\nGuardalo en un lugar de fácil acceso, cerca de donde más limpiás.","Armá tu kit de limpieza y dejalo a mano."]]},
+{t:"Limpieza que se mantiene",l:[
+["Rutina diaria de 10 minutos",6,"Una casa limpia se sostiene con poco, todos los días: hacer la cama, lavar los platos, limpiar la mesada y levantar lo que está fuera de lugar.\nAtá la rutina a algo que ya hacés, como el mate de la mañana o la cena.","Escribí tus cuatro tareas diarias y hacé la rutina completa hoy."],
+["Limpieza semanal por zonas",8,"En vez de limpiar todo en un día, asigná una zona a cada día: lunes baño, martes cocina, miércoles dormitorios, jueves polvo y pisos.\nVeinte minutos por zona alcanzan si la rutina diaria está al día.","Asigná una zona a cada día de la semana y ponela en tu calendario."],
+["Productos básicos y seguridad",7,"Con detergente neutro, vinagre, bicarbonato y un desengrasante resolvés casi todo. Menos productos, menos gasto y menos riesgo.\nNunca mezcles lavandina con vinagre, amoníaco ni otros limpiadores: se generan gases tóxicos. Ventilá siempre que uses productos fuertes.","Revisá tus productos de limpieza y apartá los que repiten función."],
+["Pisos y superficies",7,"Primero sacá el polvo seco, con escoba o aspiradora, y recién después lavá: si lavás con polvo, hacés barro.\nTrabajá del fondo hacia la salida para no pisar lo que ya limpiaste, y cambiá el agua cuando se ponga gris.","Limpiá un ambiente de punta a punta con ese orden y cronometrá cuánto tardás."],
+["Vidrios y ventanas",6,"Elegí un día nublado o limpiá a la tarde: con sol directo, el producto se seca rápido y deja marcas.\nPasá primero un paño húmedo y secá con un secador de vidrios o con papel de diario, de arriba hacia abajo y en forma de S.","Limpiá una ventana o un espejo con esa técnica."]]},
+{t:"Cocina y baño",l:[
+["La cocina de arriba abajo",10,"Limpiá de arriba hacia abajo: alacenas y estantes primero, después la mesada y al final el piso. Lo que cae no ensucia lo que ya limpiaste.\nCerrá con la cocina y la pileta, que es lo que más se nota.","Despejá la mesada y dejá solo lo que usás todos los días."],
+["Baño sin esfuerzo",8,"Aplicá el producto al empezar y dejalo actuar unos minutos mientras hacés otra cosa. El tiempo hace el trabajo, no la fuerza.\nTerminá con el espejo y el piso. Un secador de vidrios en la ducha evita el sarro.","Limpiá el baño con la técnica de dejar actuar y cronometralo."],
+["Heladera y alacena",8,"Una vez por semana, antes de hacer las compras, mirá qué hay en la heladera: tirá lo vencido y poné adelante lo que hay que usar primero.\nLimpiá los estantes con agua tibia y un chorrito de vinagre. En la alacena, dejá a la altura de los ojos lo que usás todos los días.","Ordená un estante de la heladera y uno de la alacena."],
+["Horno y electrodomésticos",8,"Con el horno tibio, no caliente, pasá una pasta de bicarbonato y agua y dejala actuar 20 minutos. Después sacala con un trapo húmedo.\nEl microondas se limpia en un minuto: dejá un bol con agua y limón 2 minutos adentro y pasá un trapo.","Limpiá el microondas o el horno con el método de dejar actuar."]]},
+{t:"Dormitorios y placards",l:[
+["Placard por categorías",10,"Sacá todo y ponelo arriba de la cama. Probate lo dudoso y decidí: si no te queda o no lo usás, se va.\nVolvé a guardar por tipo y color, con el mismo tipo de percha.","Terminá una sección del placard: camisas, pantalones o abrigos."],
+["Cama y mesa de luz",5,"La mesa de luz guarda lo que usás de noche: el velador, un libro, el cargador y poco más. Todo lo demás tiene otro lugar.\nUna cama hecha cambia cómo se ve todo el cuarto.","Vaciá tu mesa de luz y devolvé solo lo que usás cada noche."],
+["Ropa de temporada",7,"Guardá lo que no vas a usar en cajas transparentes y etiquetadas. Lavá todo antes de guardarlo.\nAnotá en la caja la fecha en que la vas a abrir de nuevo.","Prepará una caja de ropa de temporada y etiquetala."],
+["Papeles y cosas chiquitas",7,"Los papeles son lo que más se acumula. Armá tres carpetas o sobres: Para hacer, Para guardar y Para tirar. Lo que llega, va a uno de los tres el mismo día.\nUna vez al mes, revisá y vaciá la de Para tirar.","Armá tus tres carpetas y clasificá los papeles que tengas a la vista."],
+["El cuarto de los chicos",7,"Armá cajas o canastos por tipo de juguete y ponele a cada uno una etiqueta con un dibujo, así los chicos pueden guardar solos.\nSumá una caja de Descanso: los juguetes que no se usan salen del cuarto por un mes y vuelven solo si los piden.","Elegí un tipo de juguete y armale su canasto."]]},
+{t:"Hábitos para que dure",l:[
+["Uno entra, uno sale",5,"Cada objeto nuevo que entra tiene que sacar a uno parecido. Así la casa no se vuelve a llenar.\nEs la regla más simple y la que más protege tu trabajo.","Aplicá la regla en la próxima compra que hagas."],
+["Reset semanal de 20 minutos",6,"Un día fijo, dedicá 20 minutos a devolver todo a su lugar, vaciar la bandeja de papeles y preparar la semana.\nSi lo hacés siempre el mismo día, se vuelve hábito.","Elegí tu día y hora de reset y programalo."],
+["Tu plan de 30 días",8,"Juntá lo aprendido: una zona por semana, rutina diaria y reset semanal. Un ambiente a la vez.\nNo busques la perfección; buscá que cada semana esté un poco mejor.","Escribí tu plan de 4 semanas, una zona por semana."],
+["Plan B para semanas difíciles",6,"Va a haber semanas en las que no llegues a todo, y no pasa nada. Volvé al paso más chico: 15 minutos en un solo rincón.\nNo quieras recuperar todo de golpe. Retomá la rutina diaria y el reset semanal, y en pocos días estás de vuelta.","Escribí tu plan B: cuál es tu rincón de rescate para las semanas difíciles."],
+["Que toda la casa colabore",6,"El orden no tiene que ser cosa de una sola persona. Armá una lista de tareas diarias y semanales y repartila entre quienes viven en la casa.\nPonela a la vista, por ejemplo en la heladera, y revisenla juntos en el reset semanal.","Repartí tres tareas de tu lista entre las personas de tu casa."]]}
+];
+var S={done:{},pro:false,name:'',v:'home',m:0,l:0,tasks:[],shop:[]};
+var TRAD={'Limpiar la encimera':'Limpiar la mesada','Limpiar la estufa':'Limpiar la cocina y las hornallas','Limpiar el fregadero':'Limpiar la pileta','Limpiar el refrigerador':'Limpiar la heladera','Barrer y trapear el piso':'Barrer y lavar el piso','Limpiar el lavabo y el espejo':'Limpiar el lavatorio y el espejo','Limpiar la regadera o bañera':'Limpiar la ducha o la bañera','Trapear el piso':'Lavar el piso','Tender las camas':'Hacer las camas','Ordenar el buró':'Ordenar la mesa de luz','Aspirar o barrer':'Pasar la aspiradora o barrer','Sacudir el polvo':'Sacar el polvo','Acomodar cojines y mantas':'Acomodar almohadones y frazadas','Aspirar el sofá y la alfombra':'Pasar la aspiradora por el sillón y la alfombra','Ventilar las habitaciones':'Ventilar los ambientes'};
+function migrar(){var ch=0;(S.tasks||[]).forEach(function(t){if(t.g==='Sala y comedor'){t.g='Living y comedor';ch=1}if(TRAD[t.n]){t.n=TRAD[t.n];ch=1}else{var n=t.n.replace(/encimera/gi,'mesada').replace(/refrigerador/gi,'heladera').replace(/fregadero/gi,'pileta').replace(/clóset|closet/gi,'placard').replace(/buró/gi,'mesa de luz');if(n!==t.n){t.n=n;ch=1}}});if(ch)save()}
+function load(){try{var r=localStorage.getItem('ceo');if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}migrar()}
+function save(){try{localStorage.setItem('ceo',JSON.stringify(S))}catch(e){}}
+load();
+function ymd(d){return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+function mark(){S.act=S.act||{};var k=ymd(new Date());S.act[k]=(S.act[k]||0)+1;save()}
+function racha(){var a=S.act||{},d=new Date(),n=0;if(!a[ymd(d)])d.setDate(d.getDate()-1);while(a[ymd(d)]){n++;d.setDate(d.getDate()-1)}return n}
+function semana(){var a=S.act||{},d=new Date(),n=0;for(var i=0;i<7;i++){if(a[ymd(d)])n++;d.setDate(d.getDate()-1)}return n}
+function esc(s){return String(s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]})}
+function total(){return M.reduce(function(a,m){return a+m.l.length},0)}
+function count(){return Object.keys(S.done).length}
+/* ===== CONFIGURÁ ACÁ TU COBRO ===== */
+var GRATIS=false;
+var MP_LINK='https://mpago.la/33G1C9c';
+var PRECIO='$9.999';
+var PRECIO_TRANSF='$9.499'; /* 5% de descuento */
+var APPS_URL='https://script.google.com/macros/s/AKfycbwGpBaOpMMx1aubdNW08MJ8579zRlB76dxxaeJ5XVONvmLIPSbEX6YnJlBezMsfuY-v/exec';
+var _dv=null;
+function devId(){try{var d=localStorage.getItem('ceo_dev');if(!d){d=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('ceo_dev',d)}return d}catch(e){if(!_dv)_dv='t'+Math.random().toString(36).slice(2);return _dv}}
+var ALIAS='quepin.quepon';
+var WSP='5493584831449';
+/* ================================== */
+function locked(m){return !GRATIS&&!M[m].free&&!S.pro}
+function nextUndone(){for(var m=0;m<M.length;m++)for(var l=0;l<M[m].l.length;l++)if(!S.done[m+'-'+l])return[m,l];return null}
+function go(m,l){if(locked(m)){paywall();return}S.v='lesson';S.m=m;S.l=l;S.mt=m;save();render();window.scrollTo(0,0)}
+function paywall(){
+  var d=document.getElementById('dlg');
+  var msg=encodeURIComponent('Hola, hice la transferencia por el curso Casa en Orden ('+PRECIO_TRANSF+'). Te mando el comprobante.');
+  d.innerHTML='<h2>Desbloqueá el curso completo</h2><p class="sub">Los módulos 2 al 5 están incluidos en tu acceso completo.</p><ul class="ft"><li>'+total()+' lecciones con prácticas</li><li>Plan de 30 días</li><li>Checklists semanal y mensual</li><li>Acceso de por vida</li></ul><a class="btn" id="buy" href="'+MP_LINK+'" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Pagar '+PRECIO+' con Mercado Pago</a><p class="sub" style="margin:16px 0 6px"><b>O pagá por transferencia y tenés 5% de descuento:</b> <span class="tag">'+PRECIO_TRANSF+'</span> en vez de <s>'+PRECIO+'</s>. Transferí a este alias:</p><div class="row" style="margin-bottom:8px"><b style="flex:1;overflow-wrap:anywhere">'+ALIAS+'</b><button class="btn" id="ca" type="button">Copiar</button></div><a class="btn out" href="https://wa.me/'+WSP+'?text='+msg+'" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none">Enviar comprobante por WhatsApp</a><p class="sub" style="margin:16px 0 0">¿Ya pagaste? Ingresá tu código:</p><input id="cod" placeholder="Código de acceso" maxlength="20" aria-label="Código de acceso"><p class="sub" id="cm" role="status"></p><button class="btn" id="ok" style="width:100%">Desbloquear</button><button class="ghost" id="no" style="width:100%">Ahora no</button>';
+  d.showModal();
+  document.getElementById('ca').onclick=function(){var b=this;try{navigator.clipboard.writeText(ALIAS).then(function(){b.textContent='Copiado ✓'},function(){b.textContent='Copiá a mano'})}catch(e){b.textContent='Copiá a mano'}};
+  document.getElementById('ok').onclick=function(){
+    var c=document.getElementById('cod').value.trim().toUpperCase(),cm=document.getElementById('cm'),btn=this;
+    if(!c){cm.textContent='Escribí tu código.';return}
+    btn.disabled=true;cm.textContent='Verificando…';
+    fetch(APPS_URL+'?code='+encodeURIComponent(c)+'&dev='+encodeURIComponent(devId()))
+      .then(function(r){return r.json()})
+      .then(function(j){
+        if(j&&j.ok){S.pro=true;save();d.close();render()}
+        else{btn.disabled=false;cm.textContent=(j&&j.msg==='usado')?'Ese código ya fue usado en otro dispositivo. Escribinos por WhatsApp.':'Ese código no es válido. Revisalo e intentá de nuevo.'}
+      })
+      .catch(function(){btn.disabled=false;cm.textContent='No pude verificar el código. Revisá tu conexión e intentá de nuevo.'});
+  };
+  document.getElementById('no').onclick=function(){d.close()};
+}
+function recordatorio(){
+  var d=document.getElementById('dlg');
+  d.innerHTML='<h2>⏰ Recordatorio diario</h2><p class="sub">Elegí a qué hora querés tus 15 minutos. Se agrega a tu calendario y el celular te avisa todos los días.</p><input type="time" id="rh" value="19:00" aria-label="Hora del recordatorio"><a class="btn" id="rd" download="casa-en-orden-recordatorio.ics" href="#" style="display:block;text-align:center;text-decoration:none">Agregar a mi calendario</a><button class="ghost" id="rc" style="width:100%;margin-top:6px">Cerrar</button>';
+  d.showModal();
+  document.getElementById('rd').onclick=function(){
+    var t=(document.getElementById('rh').value||'19:00').split(':'),n=new Date(),p=function(x){return ('0'+x).slice(-2)},z=String.fromCharCode(13)+String.fromCharCode(10);
+    var st=n.getFullYear()+p(n.getMonth()+1)+p(n.getDate())+'T'+p(t[0])+p(t[1])+'00';
+    var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Casa en Orden//ES','BEGIN:VEVENT','UID:ceo-diario@casa-en-orden.github.io','DTSTAMP:'+st,'DTSTART:'+st,'DURATION:PT15M','RRULE:FREQ=DAILY','SUMMARY:🏡 Casa en Orden: mis 15 minutos','DESCRIPTION:Abrí el curso: https://casa-en-orden.github.io/','BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:Casa en Orden','END:VALARM','END:VEVENT','END:VCALENDAR'].join(z);
+    this.href='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+  };
+  document.getElementById('rc').onclick=function(){d.close()};
+}
+function instalar(){
+  var d=document.getElementById('dlg');
+  d.innerHTML='<h2>Instalá el curso en tu celular</h2><p class="sub">Así lo abrís con un toque desde la pantalla de inicio, como una app. Tu progreso queda guardado en ese celular.</p><h2 style="font-size:1rem">Android (Chrome)</h2><ol class="ft"><li>Abrí el curso en <b>Chrome</b>.</li><li>Tocá los <b>tres puntitos</b> de arriba a la derecha.</li><li>Elegí <b>Instalar aplicación</b> o <b>Agregar a la pantalla principal</b>.</li><li>Confirmá con <b>Instalar</b> o <b>Agregar</b>.</li></ol><h2 style="font-size:1rem">iPhone (Safari)</h2><ol class="ft"><li>Abrí el curso en <b>Safari</b> (no en otro navegador).</li><li>Tocá el botón <b>Compartir</b> (el cuadrado con una flecha hacia arriba).</li><li>Bajá y elegí <b>Agregar a pantalla de inicio</b>.</li><li>Tocá <b>Agregar</b>.</li></ol><h2 style="font-size:1rem">Computadora (Chrome o Edge)</h2><ol class="ft"><li>Abrí el curso en <b>Chrome</b> o <b>Edge</b>.</li><li>Tocá el ícono de <b>instalar</b> al final de la barra de direcciones (una pantallita con una flecha). Si no lo ves, abrí el menú de los tres puntitos y elegí <b>Instalar Casa en Orden</b> (en Edge: <b>Aplicaciones</b> y <b>Instalar este sitio como aplicación</b>).</li><li>Confirmá con <b>Instalar</b>. Se crea un acceso en el escritorio y en el menú Inicio.</li></ol><p class="sub">Si abriste el link desde WhatsApp, primero tocá <b>Abrir en el navegador</b> y después seguí los pasos.</p><button class="btn" id="cl" style="width:100%">Entendido</button>';
+  d.showModal();
+  document.getElementById('cl').onclick=function(){d.close()};
+}
+var IMG=['<svg viewBox="0 0 56 56" aria-hidden="true"><path d="M30 26c-8-2-12-9-10-15 7 1 11 7 10 15z" fill="#4F8A5B"/><path d="M30 26c1-9 6-14 12-14 1 7-4 12-12 14z" fill="#5B9A68"/><path d="M8 28h40l-4 20H12z" fill="#D4A86A"/><path d="M8 28h40v6H8z" fill="#C99A64"/><rect x="22" y="38" width="12" height="4" rx="2" fill="#FFF9EA"/></svg>', '<svg viewBox="0 0 56 56" aria-hidden="true"><rect x="20" y="26" width="18" height="24" rx="5" fill="#7FB8C9"/><rect x="24" y="16" width="10" height="10" fill="#3F7A4B"/><path d="M22 17h14l7 4-7 3H22z" fill="#3F7A4B"/><path d="M46 8q1 6 6 7-5 1-6 7-1-6-6-7 5-1 6-7z" fill="#E8B659"/><path d="M10 14q1 4 4 5-3 1-4 5-1-4-4-5 3-1 4-5z" fill="#E8B659"/></svg>', '<svg viewBox="0 0 56 56" aria-hidden="true"><rect x="10" y="26" width="36" height="20" rx="6" fill="#8AA0AE"/><rect x="8" y="22" width="40" height="7" rx="3.500" fill="#A9BDC9"/><rect x="25" y="16" width="6" height="6" rx="3" fill="#E8B659"/><rect x="3" y="30" width="7" height="4" rx="2" fill="#8AA0AE"/><rect x="46" y="30" width="7" height="4" rx="2" fill="#8AA0AE"/><path d="M20 12q-3-4 0-8M28 12q-3-4 0-8M36 12q-3-4 0-8" fill="none" stroke="#9DB7C4" stroke-width="2" stroke-linecap="round"/></svg>', '<svg viewBox="0 0 56 56" aria-hidden="true"><rect x="6" y="20" width="5" height="30" rx="2" fill="#C99A64"/><rect x="45" y="30" width="5" height="20" rx="2" fill="#C99A64"/><rect x="8" y="32" width="40" height="12" rx="4" fill="#FFF9EA"/><rect x="10" y="24" width="14" height="9" rx="4" fill="#F2C9A8"/><rect x="22" y="32" width="26" height="12" rx="4" fill="#5B9A68"/><rect x="8" y="44" width="40" height="5" rx="2" fill="#C99A64"/></svg>', '<svg viewBox="0 0 56 56" aria-hidden="true"><rect x="8" y="12" width="40" height="38" rx="8" fill="#FFF9EA" stroke="#10925A" stroke-width="3"/><rect x="8" y="12" width="40" height="11" rx="6" fill="#10925A"/><rect x="17" y="6" width="4" height="10" rx="2" fill="#E8B659"/><rect x="35" y="6" width="4" height="10" rx="2" fill="#E8B659"/><path d="M18 36l7 7 13-14" fill="none" stroke="#10925A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>'];
+var MIC=['🌱','🧽','🍳','🛏️','🔁'];
+var MCOL=[['#FF8A3D', '#FFEBD6'], ['#2E9BFF', '#DDEFFF'], ['#FF5C8A', '#FFE0EA'], ['#8B5CF6', '#EBE2FF'], ['#0FB57A', '#D9F7EA']];
+var HERO='<svg class="hero" viewBox="0 0 400 290" role="img" aria-label="Celular con la app Casa en Orden y los módulos del curso"><rect width="400" height="290" rx="28" fill="var(--hi)"/><rect x="18" y="14" width="128" height="262" rx="24" fill="#12324A"/><rect x="24" y="22" width="116" height="246" rx="18" fill="var(--card)"/><rect x="66" y="26" width="32" height="5" rx="2.5" fill="#12324A"/><rect x="32" y="40" width="18" height="18" rx="5" fill="var(--brand)"/><path d="M36 50l5-5 5 5v4h-10z" fill="#fff"/><text x="56" y="53" font-size="11" font-weight="700" fill="var(--ink)" font-family="Roboto,sans-serif">Casa en Orden</text><rect x="32" y="66" width="100" height="6" rx="3" fill="var(--line)"/><rect x="32" y="66" width="58" height="6" rx="3" fill="#FF8A3D"/><rect x="30" y="82" width="104" height="140" rx="10" fill="#FFEBD6"/><text x="38" y="99" font-size="10" font-weight="700" fill="var(--ink)" font-family="Roboto,sans-serif">Módulo 1</text><text x="38" y="112" font-size="9" fill="var(--mute)" font-family="Roboto,sans-serif">Empezá sin agobio</text><circle cx="44" cy="134" r="7" fill="var(--brand)"/><path d="M40.5 134l2.5 2.5 4.5-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><text x="56" y="137" font-size="9" fill="var(--ink)" font-family="Roboto,sans-serif">Regla de 15 min</text><circle cx="44" cy="156" r="7" fill="var(--brand)"/><path d="M40.5 156l2.5 2.5 4.5-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><text x="56" y="159" font-size="9" fill="var(--ink)" font-family="Roboto,sans-serif">Mapa de la casa</text><circle cx="44" cy="178" r="7" fill="var(--brand)"/><path d="M40.5 178l2.5 2.5 4.5-5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><text x="56" y="181" font-size="9" fill="var(--ink)" font-family="Roboto,sans-serif">Las cuatro cajas</text><circle cx="44" cy="200" r="6.5" fill="none" stroke="var(--brand)" stroke-width="1.5"/><text x="56" y="203" font-size="9" fill="var(--ink)" font-family="Roboto,sans-serif">Tu primera práctica</text><circle cx="52" cy="251" r="6" fill="var(--brand)"/><circle cx="82" cy="251" r="6" fill="var(--line)"/><circle cx="112" cy="251" r="6" fill="var(--line)"/><rect x="168" y="22" width="220" height="56" rx="12" fill="var(--card)" stroke="#2E9BFF" stroke-width="2.5"/><rect x="176" y="30" width="40" height="40" rx="10" fill="#DDEFFF"/><text x="196" y="57" font-size="21" text-anchor="middle">🧽</text><text x="226" y="43" font-size="12" font-weight="700" fill="var(--ink)" font-family="Roboto,sans-serif">Módulo 2</text><text x="226" y="57" font-size="10.5" fill="var(--mute)" font-family="Roboto,sans-serif">Limpieza que se mantiene</text><rect x="226" y="64" width="150" height="5" rx="2.5" fill="var(--line)"/><rect x="226" y="64" width="60" height="5" rx="2.5" fill="#2E9BFF"/><rect x="168" y="88" width="220" height="56" rx="12" fill="var(--card)" stroke="#FF5C8A" stroke-width="2.5"/><rect x="176" y="96" width="40" height="40" rx="10" fill="#FFE0EA"/><text x="196" y="123" font-size="21" text-anchor="middle">🍳</text><text x="226" y="109" font-size="12" font-weight="700" fill="var(--ink)" font-family="Roboto,sans-serif">Módulo 3</text><text x="226" y="123" font-size="10.5" fill="var(--mute)" font-family="Roboto,sans-serif">Cocina y baño</text><rect x="226" y="130" width="150" height="5" rx="2.5" fill="var(--line)"/><rect x="226" y="130" width="105" height="5" rx="2.5" fill="#FF5C8A"/><rect x="168" y="154" width="220" height="56" rx="12" fill="var(--card)" stroke="#8B5CF6" stroke-width="2.5"/><rect x="176" y="162" width="40" height="40" rx="10" fill="#EBE2FF"/><text x="196" y="189" font-size="21" text-anchor="middle">🛏️</text><text x="226" y="175" font-size="12" font-weight="700" fill="var(--ink)" font-family="Roboto,sans-serif">Módulo 4</text><text x="226" y="189" font-size="10.5" fill="var(--mute)" font-family="Roboto,sans-serif">Dormitorios y placards</text><rect x="226" y="196" width="150" height="5" rx="2.5" fill="var(--line)"/><rect x="226" y="196" width="45" height="5" rx="2.5" fill="#8B5CF6"/><rect x="168" y="220" width="220" height="56" rx="12" fill="var(--card)" stroke="#0FB57A" stroke-width="2.5"/><rect x="176" y="228" width="40" height="40" rx="10" fill="#D9F7EA"/><text x="196" y="255" font-size="21" text-anchor="middle">🔁</text><text x="226" y="241" font-size="12" font-weight="700" fill="var(--ink)" font-family="Roboto,sans-serif">Módulo 5</text><text x="226" y="255" font-size="10.5" fill="var(--mute)" font-family="Roboto,sans-serif">Hábitos para que dure</text><rect x="226" y="262" width="150" height="5" rx="2.5" fill="var(--line)"/><rect x="226" y="262" width="15" height="5" rx="2.5" fill="#0FB57A"/><circle cx="372" cy="22" r="0" fill="none"/><path d="M382 270q1.5 7 8 8-6.500 1-8 8-1.500-7-8-8 6.500-1 8-8z" fill="#E8B659"/><path d="M156 280q1 5 6 6-5 1-6 6-1-5-6-6 5-1 6-6z" fill="var(--brand)"/></svg>';
+function home(){
+  var n=count(),t=total(),nx=nextUndone();
+  var h,AB='<div class="appbar"><img src="icon-192.png" alt="" width="40" height="40"><b>Casa en Orden</b></div>';
+  if(S.pro){
+    h=AB+'<div class="heroc" style="padding:22px 20px"><b style="font-size:1.3rem;font-weight:900">'+(nx?(n?'Seguí donde te quedaste':'Empezá tu primera lección'):'🎉 ¡Completaste el curso!')+'</b>'+(nx?'<p class="sub" style="margin:6px 0 16px">'+M[nx[0]].l[nx[1]][0]+' · '+M[nx[0]].l[nx[1]][1]+' min</p><button class="btn" id="cont" style="width:100%">'+(n?'Continuar':'Empezar hoy')+'</button>':'<p class="sub" style="margin:6px 0 0">Podés repasar cuando quieras desde las pestañas de abajo.</p>')+'</div>';
+  }else{
+  h=AB+'<div class="heroc"><span class="pill">Curso online · a tu ritmo</span><h1>Tu casa en orden, <em>en 15 minutos al día.</em></h1><p class="lead">Un método simple para organizar, limpiar y mantener tu casa sin estrés ni fines de semana perdidos.</p>';
+  h+='<div class="cta">'+(nx?'<button class="btn" id="cont">'+(n?'Continuar':'Empezar hoy')+'</button>':'<button class="btn" id="done" type="button">🎉 ¡Completaste el curso!</button>')+'<button class="btn out" id="vp">Ver programa</button></div><div class="chips"><span>⏱️ 15 min por día</span><span>🎤 Tareas y compras por voz</span><span>🗓️ Checklists para imprimir</span><span>♾️ Acceso de por vida</span></div>'+HERO+'</div>';}
+  h+='<div class="stats"><div class="st" style="--c:#FF8A3D"><b>🔥 '+racha()+'</b><span>'+(racha()===1?'día seguido':'días seguidos')+'</span></div><div class="st" style="--c:#2E9BFF"><b>📅 '+semana()+'/7</b><span>días activos esta semana</span></div><div class="st" style="--c:#0FB57A"><b>✅ '+n+'/'+t+'</b><span>lecciones listas</span></div></div><button class="btn out" id="rem" type="button" style="width:100%;margin-top:12px">⏰ Programar mi recordatorio diario</button>';
+  if(!S.pro&&!GRATIS)h+='<div class="band"><b>¡Probá GRATIS el primer módulo!</b><span>El resto del curso se desbloquea con tu código de acceso.</span><button class="btn" type="button" data-pw="1">Desbloquear el curso</button></div>';
+  h+='<button class="btn out" id="chk" type="button" style="width:100%;margin-top:14px">🗓️ Checklists semanal y mensual</button>';
+  h+='<button class="btn out" id="ins" type="button" style="width:100%;margin-top:18px">📲 Cómo instalar el curso en tu celular</button><div class="prog" id="prog"><div><b>'+n+' de '+t+' lecciones</b><div class="bar"><i style="width:'+Math.round(n/t*100)+'%"></i></div></div>'+(n?'<button class="ghost" id="rst">Destildar todo el curso para repetirlo</button>':'')+'</div>';
+var cur=(S.mt==null)?(nextUndone()?nextUndone()[0]:0):S.mt;if(cur<0||cur>=M.length)cur=0;
+  h+='<div class="mtabs" role="tablist">'+M.map(function(m,mi){var dn=m.l.filter(function(x,li){return S.done[mi+'-'+li]}).length;return '<button type="button" role="tab" class="mtab'+(mi===cur?' sel':'')+'" data-mt="'+mi+'" aria-selected="'+(mi===cur)+'" style="--mc:'+MCOL[mi][0]+';--mt:'+MCOL[mi][1]+'"><span class="e">'+MIC[mi]+'</span><b>Módulo '+(mi+1)+'</b><small>'+(dn===m.l.length?'✓ listo':dn+' de '+m.l.length)+'</small></button>'}).join('')+'</div>';
+  M.forEach(function(m,mi){
+    if(mi!==cur)return;
+    var dn=m.l.filter(function(x,li){return S.done[mi+'-'+li]}).length;
+    var MC=[['#FF8A3D', '#FFEBD6'], ['#2E9BFF', '#DDEFFF'], ['#FF5C8A', '#FFE0EA'], ['#8B5CF6', '#EBE2FF'], ['#0FB57A', '#D9F7EA']],IC=['🌱','🧽','🍳','🛏️','🔁'],mins=m.l.reduce(function(x,l){return x+l[1]},0);
+    h+='<section class="mod" style="--mc:'+MC[mi][0]+';--mt:'+MC[mi][1]+'"><header><span class="mn">'+IMG[mi]+'</span><div class="mi"><h2>'+m.t+'</h2><small>Módulo '+(mi+1)+' · '+mins+' min · '+dn+' de '+m.l.length+' lecciones</small><div class="bar"><i style="width:'+Math.round(dn/m.l.length*100)+'%"></i></div></div>'+(locked(mi)?'<button class="tag" type="button" data-pw="1" style="cursor:pointer;border:0;padding:7px 14px;font-size:.8rem">🔒 Completo</button>':'')+'</header>';
+    m.l.forEach(function(l,li){var d=S.done[mi+'-'+li];
+      h+='<button class="les'+(d?' on':'')+'" data-m="'+mi+'" data-l="'+li+'"><span class="dot">'+(d?'✓':li+1)+'</span><span><b>'+l[0]+'</b><small>'+l[1]+' min</small></span></button>'});
+    if(dn)h+='<button class="les" data-rm="'+mi+'" style="color:var(--mute);font-weight:600">Destildar este módulo para repetirlo</button>';
+    h+='</section>'});
+  return h}
+function lesson(){
+  var m=M[S.m],ls=m.l[S.l],d=S.done[S.m+'-'+S.l];
+  return '<button class="ghost" id="back">← Volver al temario</button><p class="sub">Módulo '+(S.m+1)+' · '+m.t+' · '+ls[1]+' min</p><h1>'+ls[0]+'</h1><div class="les-body" style="margin-top:16px;--mc:'+MCOL[S.m][0]+';--mt:'+MCOL[S.m][1]+'">'+ls[2].split('\n').map(function(p){return'<p>'+p+'</p>'}).join('')+'</div><div class="task" style="--mc:'+MCOL[S.m][0]+';--mt:'+MCOL[S.m][1]+'"><b>Práctica</b><p>'+ls[3]+'</p><button class="ghost" id="addt" type="button">+ Agregar a mis tareas</button></div><button class="btn" id="fin" style="width:100%">'+(d?'Siguiente lección':'Hice la práctica. Completar')+'</button>'+(d?'<button class="ghost" id="undo" style="width:100%;margin-top:6px">Destildar esta lección para repetirla</button>':'')}
+var ED=null,VMSG='';
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function escA(s){return esc(s).replace(/'/g,'&#39;')}
+function tareas(){
+  var dn=S.tasks.filter(function(t){return t.c}).length;
+  var h=`<h1>Mis tareas</h1><p class='sub'>Anotá lo que vas haciendo. Tocá ✎ para editar una tarea, o 🎤 para dictar una.</p>${S.tasks.length?`<b>${dn} de ${S.tasks.length} hechas</b><div class='bar'><i style='width:${Math.round(dn/S.tasks.length*100)}%'></i></div>`:''}<form class='add' id='ft'><input type='text' id='tn' placeholder='Ej. Ordenar el placard' maxlength='80' aria-label='Nueva tarea'><select id='tg' aria-label='Zona'><option value=''>Sin zona</option>${ZONAS.map(function(z){return `<option>${z}</option>`}).join('')}</select><button type='button' class='btn mic' id='mict' aria-label='Dictar una tarea con la voz'>🎤</button><button class='btn' type='submit'>Agregar</button></form><p class='sub' id='vm' role='status'>${esc(VMSG)}</p>`;
+  if(!S.tasks.length)h+=`<div class='empty'>Todavía no tenés tareas. Agregá la primera o tocá “Agregar a mis tareas” dentro de una lección.</div>`;
+  S.tasks.forEach(function(t){
+    if(ED===t.id)h+=`<div class='row'><input type='text' id='et' value='${escA(t.n)}' maxlength='80' aria-label='Editar tarea'><button class='btn' data-sv='1'>Guardar</button></div>`;
+    else h+=`<div class='row${t.c?' on':''}'><label><input type='checkbox' data-tc='${t.id}'${t.c?' checked':''}><span>${esc(t.n)}${t.g?`<small class='z'>${esc(t.g)}</small>`:''}</span></label><button class='x' data-ed='${t.id}' aria-label='Editar'>✎</button><button class='x' data-td='${t.id}' aria-label='Quitar'>✕</button></div>`});
+  if(!S.tasks.length)h+=`<button class='btn' id='pre' style='width:100%;margin-bottom:10px'>Cargar lista de la casa (26 tareas)</button>`;
+  else if(!S.tasks.some(function(t){return t.g}))h+=`<button class='ghost' id='pre'>Agregar lista de la casa</button>`;
+  if(S.tasks.length)h+=`<button class='ghost' id='unt'>Destildar todo</button>`;
+  if(dn)h+=`<button class='ghost' id='tcl'>Quitar las hechas (${dn})</button>`;
+  return h}
+var ZONAS=['Cocina','Baño','Dormitorios','Living y comedor','Toda la casa'];
+var DEF={'Cocina':['Lavar los platos','Limpiar la mesada','Limpiar la cocina y las hornallas','Limpiar la pileta','Sacar la basura','Limpiar la heladera','Barrer y lavar el piso'],'Baño':['Limpiar el inodoro','Limpiar el lavatorio y el espejo','Limpiar la ducha o la bañera','Cambiar las toallas','Lavar el piso'],'Dormitorios':['Hacer las camas','Cambiar las sábanas','Guardar la ropa','Ordenar la mesa de luz','Pasar la aspiradora o barrer'],'Living y comedor':['Sacar el polvo','Acomodar almohadones y frazadas','Despejar la mesa','Pasar la aspiradora por el sillón y la alfombra'],'Toda la casa':['Lavar la ropa','Doblar y guardar la ropa','Sacar la basura y el reciclaje','Regar las plantas','Ventilar los ambientes']};
+function cargarLista(){var n=0;ZONAS.forEach(function(z){DEF[z].forEach(function(x){S.tasks.push({id:Date.now()+(n++),g:z,n:x,c:0})})});save();render()}
+function saveEd(){var t=S.tasks.find(function(x){return x.id===ED}),el=document.getElementById('et'),v=el?el.value.trim():'';if(t&&v)t.n=v;ED=null;save();render()}
+function compras(){
+  var dn=S.shop.filter(function(t){return t.c}).length;
+  var h=`<h1>Compras</h1><p class='sub'>Anotá lo que se acaba o falta. Escribí, o tocá 🎤 y decí, por ejemplo: “detergente, bolsas de residuos y esponjas”.</p><form class='add' id='fs'><input type='text' id='sn' placeholder='Ej. Detergente' maxlength='60' aria-label='Nuevo material'><button type='button' class='btn mic' id='mic' aria-label='Dictar con la voz'>🎤</button><button class='btn' type='submit'>Agregar</button></form><p class='sub' id='vm' role='status'>${esc(VMSG)}</p>`;
+  if(!S.shop.length)h+=`<div class='empty'>La lista está vacía. Anotá lo que falte.</div>`;
+  S.shop.forEach(function(t){h+=`<div class='row${t.c?' on':''}'><label><input type='checkbox' data-sc='${t.id}'${t.c?' checked':''}><span>${esc(t.n)}</span></label><button class='x' data-sd='${t.id}' aria-label='Quitar'>✕</button></div>`});
+  if(S.shop.length)h+=`<button class='ghost' id='cpy'>Copiar lista</button>`;
+  if(dn)h+=`<button class='ghost' id='scl'>Quitar lo comprado (${dn})</button>`;
+  return h}
+function addShop(txt,voice){
+  var n=0;(voice?txt.split(/,| y /i):txt.split(',')).forEach(function(p){p=p.replace(/[.]$/,'').trim();if(p){S.shop.push({id:Date.now()+(n++),n:cap(p),c:0})}});
+  return n}
+function addTask(txt){var n=0,g=(document.getElementById('tg')||{}).value||'';txt.split(/,| y luego | y después | luego | después /i).forEach(function(p){p=p.replace(/[.]$/,'').trim();if(p){S.tasks.push({id:Date.now()+(n++),g:g,n:cap(p),c:0})}})}
+function setVm(t){VMSG=t;var e=document.getElementById('vm');if(e)e.textContent=t}
+function dictar(dest){
+  var R=window.SpeechRecognition||window.webkitSpeechRecognition,tip='Si no funciona acá, usá el micrófono del teclado de tu celular.';
+  if(!R){setVm('Tu navegador no permite dictado. '+tip);return}
+  var r=new R(),m=document.getElementById(dest==='tasks'?'mict':'mic');
+  r.lang='es-AR';r.interimResults=false;r.maxAlternatives=1;
+  r.onresult=function(e){var t=e.results[0][0].transcript;if(dest==='tasks')addTask(t);else addShop(t,true);VMSG='Agregué: '+t;save();render()};
+  r.onerror=function(){setVm('No pude escuchar. '+tip)};
+  r.onend=function(){if(m)m.classList.remove('rec')};
+  try{r.start();m.classList.add('rec');setVm('Escuchando… hablá ahora.')}catch(e){setVm('No pude abrir el micrófono. '+tip)}}
+var DEF2={'Cocina':['Limpiar el horno','Descongelar y limpiar el freezer','Limpiar las alacenas por dentro','Limpiar rejillas y desagües'],'Baño':['Descalcificar canillas y ducha','Lavar la cortina y la alfombra','Limpiar azulejos y juntas'],'Dormitorios':['Airear o dar vuelta los colchones','Lavar almohadas y cubrecamas','Ordenar un cajón o sección del placard'],'Living y comedor':['Lavar o sacudir las cortinas','Limpiar vidrios y ventanas','Limpiar detrás de los muebles','Pasar un paño por zócalos y puertas'],'Toda la casa':['Revisar y donar lo que no usás','Revisar y reponer productos de limpieza']};
+function checklist(){
+  var m=S.cv==='m',cols=m?['S1','S2','S3','S4']:['L','M','X','J','V','S','D'],src=m?DEF2:DEF,ck=S.chk||{};
+  var hay=Object.keys(ck).some(function(k){return m?k.charAt(0)==='m':k.charAt(0)!=='m'});
+  var h='<div class="noprint"><button class="ghost" id="back">← Volver al temario</button></div><h1>'+(m?'Checklist del mes':'Checklist semanal')+'</h1><div class="seg noprint"><button type="button" id="cvs" class="'+(m?'':'on')+'">Semanal</button><button type="button" id="cvm" class="'+(m?'on':'')+'">Mensual</button></div><p class="sub">'+(m?'Limpieza profunda, una semana a la vez y sin apuro. Tocá una casilla cuando termines la tarea.':'Tocá una casilla para tildarla el día que hagas la tarea.')+' También podés imprimirla o guardarla como PDF.</p>';
+  ZONAS.forEach(function(z,zi){if(!src[z])return;h+='<table class="chk"><thead><tr><th>'+z+'</th>'+cols.map(function(d){return '<th>'+d+'</th>'}).join('')+'</tr></thead><tbody>';src[z].forEach(function(t,ti){h+='<tr><td>'+t+'</td>'+cols.map(function(d,di){var k=(m?'m-':'')+zi+'-'+ti+'-'+di;return '<td><button type="button" class="bx'+(ck[k]?' on':'')+'" data-ck="'+k+'" aria-pressed="'+(ck[k]?'true':'false')+'" aria-label="'+t+' '+d+'"></button></td>'}).join('')+'</tr>'});h+='</tbody></table>'});
+  return h+'<button class="btn noprint" id="prt" style="width:100%;margin-top:18px">🖨️ Imprimir o guardar como PDF</button>'+(hay?'<button class="ghost noprint" id="ckc" style="width:100%;margin-top:8px">'+(m?'Destildar todo para empezar un mes nuevo':'Destildar todo para empezar una semana nueva')+'</button>':'')}
+function render(){
+  if(S.v==='cert')S.v='home';
+  document.getElementById('app').innerHTML=({home:home,lesson:lesson,tareas:tareas,compras:compras,check:checklist})[S.v]();
+  document.getElementById('tabs').innerHTML=[['home','🏠 Curso'],['tareas','✅ Mis tareas'],['compras','🛒 Compras']].map(function(x){var on=(S.v===x[0])||(x[0]==='home'&&S.v!=='tareas'&&S.v!=='compras');return `<button data-tv='${x[0]}'${on?' aria-current=page':''}>${x[1]}</button>`}).join('');
+  document.getElementById('app').classList.toggle('hasback',!!document.getElementById('back'));document.body.classList.toggle('hasback',!!document.getElementById('back'));
+  var f;
+  document.querySelectorAll('[data-ck]').forEach(function(b){b.onclick=function(){S.chk=S.chk||{};var k=b.dataset.ck;if(S.chk[k]){delete S.chk[k];b.classList.remove('on');b.setAttribute('aria-pressed','false')}else{S.chk[k]=1;mark();b.classList.add('on');b.setAttribute('aria-pressed','true')}save()}});
+  if(f=document.getElementById('cvs'))f.onclick=function(){S.cv='s';save();render()};
+  if(f=document.getElementById('cvm'))f.onclick=function(){S.cv='m';save();render()};
+  if(f=document.getElementById('ckc'))f.onclick=function(){if(this.dataset.ok){var mm=S.cv==='m';Object.keys(S.chk||{}).forEach(function(k){if(mm?k.charAt(0)==='m':k.charAt(0)!=='m')delete S.chk[k]});save();render()}else{this.dataset.ok=1;this.textContent='Tocá de nuevo para destildar todo'}};
+  if(f=document.getElementById('chk'))f.onclick=function(){S.v='check';save();render();window.scrollTo(0,0)};
+  if(f=document.getElementById('rem'))f.onclick=recordatorio;
+  if(f=document.getElementById('ins'))f.onclick=instalar;
+  if(f=document.getElementById('vp'))f.onclick=function(){document.getElementById('prog').scrollIntoView({behavior:'smooth'})};
+  document.querySelectorAll('[data-tv]').forEach(function(b){b.onclick=function(){S.v=b.dataset.tv;ED=null;save();render();window.scrollTo(0,0)}});
+  if(f=document.getElementById('ft'))f.onsubmit=function(e){e.preventDefault();var v=document.getElementById('tn').value.trim();if(v){S.tasks.push({id:Date.now(),g:document.getElementById('tg').value,n:v,c:0});save();render()}};
+  document.querySelectorAll('[data-tc]').forEach(function(i){i.onchange=function(){var t=S.tasks.find(function(x){return x.id==i.dataset.tc});t.c=i.checked?1:0;if(i.checked)mark();save();render()}});
+  document.querySelectorAll('[data-td]').forEach(function(b){b.onclick=function(){S.tasks=S.tasks.filter(function(x){return x.id!=b.dataset.td});save();render()}});
+  document.querySelectorAll('[data-ed]').forEach(function(b){b.onclick=function(){ED=+b.dataset.ed;render();var el=document.getElementById('et');if(el)el.focus()}});
+  if(f=document.getElementById('et'))f.onkeydown=function(e){if(e.key==='Enter')saveEd()};
+  document.querySelectorAll('[data-sv]').forEach(function(b){b.onclick=saveEd});
+  if(f=document.getElementById('tcl'))f.onclick=function(){S.tasks=S.tasks.filter(function(x){return !x.c});save();render()};
+  if(f=document.getElementById('undo'))f.onclick=function(){delete S.done[S.m+'-'+S.l];save();render()};
+  if(f=document.getElementById('rst'))f.onclick=function(){if(this.dataset.ok){S.done={};S.v='home';save();render()}else{this.dataset.ok=1;this.textContent='Tocá de nuevo para destildar todo'}};
+  document.querySelectorAll('[data-rm]').forEach(function(b){b.onclick=function(){var m=+b.dataset.rm;M[m].l.forEach(function(x,i){delete S.done[m+'-'+i]});save();render()}});
+  if(f=document.getElementById('pre'))f.onclick=cargarLista;
+  if(f=document.getElementById('unt'))f.onclick=function(){S.tasks.forEach(function(t){t.c=0});save();render()};
+  if(f=document.getElementById('addt'))f.onclick=function(){S.tasks.push({id:Date.now(),n:M[S.m].l[S.l][3],c:0});save();this.textContent='Agregada ✓';this.disabled=true};
+  if(f=document.getElementById('fs'))f.onsubmit=function(e){e.preventDefault();var i=document.getElementById('sn');if(i.value.trim()){addShop(i.value,false);VMSG='';save();render()}};
+  if(f=document.getElementById('mic'))f.onclick=function(){dictar('shop')};
+  if(f=document.getElementById('mict'))f.onclick=function(){dictar('tasks')};
+  document.querySelectorAll('[data-sc]').forEach(function(i){i.onchange=function(){var t=S.shop.find(function(x){return x.id==i.dataset.sc});t.c=i.checked?1:0;save();render()}});
+  document.querySelectorAll('[data-sd]').forEach(function(b){b.onclick=function(){S.shop=S.shop.filter(function(x){return x.id!=b.dataset.sd});save();render()}});
+  if(f=document.getElementById('scl'))f.onclick=function(){S.shop=S.shop.filter(function(x){return !x.c});save();render()};
+  if(f=document.getElementById('cpy'))f.onclick=function(){var tx=S.shop.filter(function(x){return !x.c}).map(function(x){return '- '+x.n}).join(String.fromCharCode(10));try{navigator.clipboard.writeText(tx).then(function(){setVm('Lista copiada.')},function(){setVm('No pude copiar. Seleccioná y copiá a mano.')})}catch(e){setVm('No pude copiar.')}};
+  document.querySelectorAll('[data-mt]').forEach(function(b){b.onclick=function(){var y=window.scrollY;S.mt=+b.dataset.mt;save();render();window.scrollTo(0,y)}});
+  var sel=document.querySelector('.mtab.sel');if(sel&&sel.scrollIntoView)sel.scrollIntoView({inline:'center',block:'nearest'});
+  document.querySelectorAll('[data-pw]').forEach(function(b){b.onclick=paywall});
+  document.querySelectorAll('[data-m]').forEach(function(b){b.onclick=function(){go(+b.dataset.m,+b.dataset.l)}});
+  if(f=document.getElementById('cont'))f.onclick=function(){var n=nextUndone();go(n[0],n[1])};
+  if(f=document.getElementById('back'))f.onclick=function(){S.v='home';save();render()};
+  if(f=document.getElementById('fin'))f.onclick=function(){
+    S.done[S.m+'-'+S.l]=1;mark();
+    var m=S.m,l=S.l+1;if(l>=M[m].l.length){m++;l=0}
+    if(m>=M.length){S.v='home';save();render();window.scrollTo(0,0);return}
+    if(locked(m)){S.v='home';save();render();paywall();return}
+    go(m,l)};
+  if(f=document.getElementById('prt'))f.onclick=function(){window.print()};
+}
+render();
+if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
+</script>
+</body>
+</html>
